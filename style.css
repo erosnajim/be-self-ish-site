@@ -1,0 +1,243 @@
+/* Self-ish, Storybook Lamplight (docs/Self-ish_Brand_V2.md):
+   the dusk sky outside the room's window behind everything, parchment cards
+   cut from the page with an ink outline and a hard shadow, Young Serif
+   titles, Nunito labels, burnt-orange links. At night, the night sky. */
+
+:root {
+  --ink: #3b2a26;
+  --ink-soft: rgba(59, 42, 38, 0.72);
+  --parchment: #fbf3e4;
+  --cream: #fef9f3;
+  --orange: #bf4a12;
+  --pin: #e4631d;
+  --sky: linear-gradient(180deg, #d9654f 0%, #ee8a4c 32%, #f7a94e 62%, #fccb6a 100%);
+  --sky-ink: #2a1620;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sky: linear-gradient(180deg, #120c2b 0%, #241746 45%, #3b2667 100%);
+    --sky-ink: #fff9f3;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { background: #d9654f; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--sky);
+  background-attachment: fixed;
+  color: var(--ink);
+  font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 16px 64px;
+}
+
+/* The page's companion, then the title, on the sky. */
+header {
+  text-align: center;
+  color: var(--sky-ink);
+  margin-bottom: 26px;
+}
+.creature { width: 120px; height: auto; display: block; margin: 0 auto -6px; }
+/* The three friends as a photo pinned into the book. */
+.photo {
+  position: relative;
+  display: block;
+  width: min(300px, 78%);
+  margin: 14px auto 18px;
+  background: #fffdf8;
+  padding: 10px 10px 14px;
+  box-shadow: 0 10px 24px rgba(30, 18, 28, 0.35);
+  transform: rotate(-2deg);
+}
+.photo img { display: block; width: 100%; height: auto; }
+.photo::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  margin-left: -9px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f6a06b, var(--pin) 55%, #a8410e);
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.35);
+}
+
+.kicker {
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin: 0 0 4px;
+  opacity: 0.85;
+}
+
+h1 {
+  font-family: "Young Serif", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(30px, 7vw, 40px);
+  line-height: 1.15;
+  margin: 0 0 8px;
+}
+
+.sub {
+  margin: 0 auto;
+  max-width: 34em;
+  font-size: 17px;
+}
+/* Header text follows the sky (dark by day, cream at night). */
+header p { color: inherit; }
+
+/* A parchment card cut from the page. */
+main {
+  background: var(--parchment);
+  border: 1.5px solid var(--ink);
+  border-radius: 14px 18px 15px 13px;
+  box-shadow: 4px 4px 0 var(--ink);
+  padding: 26px 22px;
+}
+
+h2 {
+  font-family: "Young Serif", Georgia, serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.25;
+  margin: 30px 0 8px;
+}
+main > h2:first-child, section:first-child > h2:first-child { margin-top: 0; }
+
+h3 {
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: 17px;
+  margin: 22px 0 4px;
+}
+
+p, li { color: var(--ink); }
+ul { padding-left: 20px; margin: 8px 0; }
+li { margin: 6px 0; }
+strong { font-weight: 700; }
+
+a {
+  color: var(--orange);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+.muted { color: var(--ink-soft); font-size: 15px; }
+
+/* Tables read as rows on the parchment. */
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 15px; }
+th, td {
+  text-align: left;
+  padding: 9px 10px;
+  border-bottom: 1px dashed rgba(59, 42, 38, 0.3);
+  vertical-align: top;
+}
+th {
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+/* Buttons: parchment cards with a hard shadow that presses flat. */
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin: 18px 0 0;
+}
+.button {
+  display: inline-block;
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--parchment);
+  border: 1.5px solid var(--ink);
+  border-radius: 9px 11px 7px 9px;
+  box-shadow: 3px 3px 0 var(--ink);
+  padding: 12px 20px;
+  min-height: 44px;
+  transition: transform 0.08s, box-shadow 0.08s;
+}
+.button.primary { background: var(--orange); color: var(--parchment); }
+.button:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+
+/* An orange push-pin with a paper tag, like the book's photos. */
+.pin {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.pin::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f6a06b, var(--pin) 55%, #a8410e);
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.3);
+}
+.pin span {
+  margin-top: -3px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  background: var(--parchment);
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+  box-shadow: 2px 2px 0 var(--ink);
+  padding: 1px 8px;
+}
+
+footer {
+  margin-top: 26px;
+  text-align: center;
+  color: var(--sky-ink);
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+}
+footer a { color: var(--sky-ink); }
+
+@media (max-width: 420px) {
+  main { padding: 22px 16px; }
+  th, td { padding: 8px 6px; }
+}
+
+/* Support: the contact box and the questions. */
+.contact {
+  background: var(--cream);
+  border: 1.5px dashed var(--ink);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 0 0 8px;
+}
+.contact strong {
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+}
+.q {
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: 17px;
+  margin: 22px 0 2px;
+}
+.q + p { margin-top: 2px; }
